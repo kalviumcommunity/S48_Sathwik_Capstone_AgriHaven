@@ -1,0 +1,15 @@
+{
+  "name": "s48_sathwik_capstone_agrihaven",
+  "version": "1.0.0",
+  "description": "AgriHaven is an e-commerce platform for farmers and gardeners, offering tools, manure, seeds, irrigation systems, and pest control products. It provides a seamless shopping experience, secure payments, and a supplier marketplace while promoting sustainable farming practices and community knowledge-sharing.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
