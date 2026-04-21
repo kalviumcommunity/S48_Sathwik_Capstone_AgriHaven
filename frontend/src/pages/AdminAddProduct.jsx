@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
+import API_BASE_URL from '../config';
 
 const AdminAddProduct = () => {
   const { user, token } = useContext(AuthContext);
@@ -37,7 +38,7 @@ const AdminAddProduct = () => {
       const formData = new FormData();
       formData.append('image', image);
 
-      const uploadRes = await fetch('http://localhost:5000/api/upload', {
+      const uploadRes = await fetch(`${API_BASE_URL}/api/upload`, {
         method: 'POST',
         headers: {
           Authorization: `Bearer ${token}`
@@ -54,7 +55,7 @@ const AdminAddProduct = () => {
       const imageUrl = uploadData.imageUrl;
 
       // 2. Create Product
-      const productRes = await fetch('http://localhost:5000/api/products', {
+      const productRes = await fetch(`${API_BASE_URL}/api/products`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

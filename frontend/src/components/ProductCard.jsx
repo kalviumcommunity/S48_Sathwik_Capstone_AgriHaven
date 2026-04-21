@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { CartContext } from '../context/CartContext';
+import API_BASE_URL from '../config';
 
 const ProductCard = ({ product }) => {
   const { addToCart } = useContext(CartContext);
@@ -8,7 +9,7 @@ const ProductCard = ({ product }) => {
   return (
     <div className="product-card">
       <Link to={`/products/${product._id}`}>
-        <img src={`http://localhost:5000${product.imageUrl}`} alt={product.name} className="product-image" crossOrigin="anonymous"/>
+        <img src={`${API_BASE_URL}${product.imageUrl}`} alt={product.name} className="product-image" crossOrigin="anonymous"/>
       </Link>
       <div className="product-info">
         <h3>{product.name}</h3>

@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 import AdminSidebar from '../components/AdminSidebar';
+import API_BASE_URL from '../config';
 
 const AdminOrders = () => {
   const { user, token } = useContext(AuthContext);
@@ -19,7 +20,7 @@ const AdminOrders = () => {
 
   const fetchOrders = async () => {
     try {
-      const res = await fetch('http://localhost:5000/api/orders/all', {
+      const res = await fetch(`${API_BASE_URL}/api/orders/all`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       const data = await res.json();
@@ -33,7 +34,7 @@ const AdminOrders = () => {
 
   const updateStatus = async (id, status) => {
     try {
-      const res = await fetch(`http://localhost:5000/api/orders/${id}/status`, {
+      const res = await fetch(`${API_BASE_URL}/api/orders/${id}/status`, {
         method: 'PUT',
         headers: { 
           'Content-Type': 'application/json',

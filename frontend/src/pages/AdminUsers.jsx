@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 import AdminSidebar from '../components/AdminSidebar';
+import API_BASE_URL from '../config';
 
 const AdminUsers = () => {
   const { user, token } = useContext(AuthContext);
@@ -19,7 +20,7 @@ const AdminUsers = () => {
 
   const fetchUsers = async () => {
     try {
-      const res = await fetch('http://localhost:5000/api/users', {
+      const res = await fetch(`${API_BASE_URL}/api/users`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       const data = await res.json();
@@ -33,7 +34,7 @@ const AdminUsers = () => {
 
   const toggleRole = async (id) => {
     try {
-      const res = await fetch(`http://localhost:5000/api/users/${id}/role`, {
+      const res = await fetch(`${API_BASE_URL}/api/users/${id}/role`, {
         method: 'PUT',
         headers: { Authorization: `Bearer ${token}` }
       });
@@ -46,7 +47,7 @@ const AdminUsers = () => {
   const deleteUser = async (id) => {
     if (!window.confirm('Are you sure you want to delete this user?')) return;
     try {
-      const res = await fetch(`http://localhost:5000/api/users/${id}`, {
+      const res = await fetch(`${API_BASE_URL}/api/users/${id}`, {
         method: 'DELETE',
         headers: { Authorization: `Bearer ${token}` }
       });

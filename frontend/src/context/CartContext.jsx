@@ -1,5 +1,6 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
 import { AuthContext } from './AuthContext';
+import API_BASE_URL from '../config';
 
 export const CartContext = createContext();
 
@@ -17,7 +18,7 @@ export const CartProvider = ({ children }) => {
 
   const fetchCart = async () => {
     try {
-      const res = await fetch('http://localhost:5000/api/cart', {
+      const res = await fetch(`${API_BASE_URL}/api/cart`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       if(res.ok) {
@@ -32,7 +33,7 @@ export const CartProvider = ({ children }) => {
   const addToCart = async (productId, currentQty) => {
     if (!token) return alert('Please login to add to cart');
     try {
-      const res = await fetch('http://localhost:5000/api/cart', {
+      const res = await fetch(`${API_BASE_URL}/api/cart`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
