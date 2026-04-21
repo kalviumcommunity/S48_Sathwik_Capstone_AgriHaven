@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 import AdminSidebar from '../components/AdminSidebar';
+import API_BASE_URL from '../config';
 
 const AdminProducts = () => {
   const { user, token } = useContext(AuthContext);
@@ -19,7 +20,7 @@ const AdminProducts = () => {
 
   const fetchProducts = async () => {
     try {
-      const res = await fetch('http://localhost:5000/api/products');
+      const res = await fetch(`${API_BASE_URL}/api/products`);
       const data = await res.json();
       setProducts(data);
     } catch (error) {
@@ -32,7 +33,7 @@ const AdminProducts = () => {
   const deleteProduct = async (id) => {
     if (!window.confirm('Are you sure you want to delete this product?')) return;
     try {
-      const res = await fetch(`http://localhost:5000/api/products/${id}`, {
+      const res = await fetch(`${API_BASE_URL}/api/products/${id}`, {
         method: 'DELETE',
         headers: { Authorization: `Bearer ${token}` }
       });
@@ -67,7 +68,7 @@ const AdminProducts = () => {
             {products.map(p => (
               <tr key={p._id}>
                 <td>
-                  <img src={`http://localhost:5000${p.imageUrl}`} alt={p.name} style={{ width: '50px', height: '50px', objectFit: 'cover', borderRadius: '4px' }} />
+                  <img src={`${API_BASE_URL}${p.imageUrl}`} alt={p.name} style={{ width: '50px', height: '50px', objectFit: 'cover', borderRadius: '4px' }} />
                 </td>
                 <td>{p.name}</td>
                 <td>{p.category}</td>

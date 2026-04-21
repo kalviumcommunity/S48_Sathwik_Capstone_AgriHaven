@@ -12,7 +12,7 @@ connectDB();
 const app = express();
 
 // Middleware
-app.use(cors({ origin: 'http://localhost:5173' })); // Updated to Vite's default
+app.use(cors()); // Allow all origins
 app.use(express.json());
 
 // Main Routes

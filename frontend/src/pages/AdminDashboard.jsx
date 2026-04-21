@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 import AdminSidebar from '../components/AdminSidebar';
+import API_BASE_URL from '../config';
 
 const AdminDashboard = () => {
   const { user, token } = useContext(AuthContext);
@@ -23,9 +24,9 @@ const AdminDashboard = () => {
     const fetchStats = async () => {
       try {
         const [usersRes, productsRes, ordersRes] = await Promise.all([
-          fetch('http://localhost:5000/api/users', { headers: { Authorization: `Bearer ${token}` } }),
-          fetch('http://localhost:5000/api/products'),
-          fetch('http://localhost:5000/api/orders/all', { headers: { Authorization: `Bearer ${token}` } })
+          fetch(`${API_BASE_URL}/api/users`, { headers: { Authorization: `Bearer ${token}` } }),
+          fetch(`${API_BASE_URL}/api/products`),
+          fetch(`${API_BASE_URL}/api/orders/all`, { headers: { Authorization: `Bearer ${token}` } })
         ]);
 
         const usersData = await usersRes.json();

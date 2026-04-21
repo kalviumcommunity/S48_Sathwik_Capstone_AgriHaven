@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { CartContext } from '../context/CartContext';
+import API_BASE_URL from '../config';
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -11,7 +12,7 @@ const ProductDetail = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const res = await fetch(`http://localhost:5000/api/products/${id}`);
+        const res = await fetch(`${API_BASE_URL}/api/products/${id}`);
         if(res.ok) {
             const data = await res.json();
             setProduct(data);
@@ -30,7 +31,7 @@ const ProductDetail = () => {
   return (
     <div className="product-detail">
       <div className="product-detail-img">
-        <img src={`http://localhost:5000${product.imageUrl}`} alt={product.name} crossOrigin="anonymous"/>
+        <img src={`${API_BASE_URL}${product.imageUrl}`} alt={product.name} crossOrigin="anonymous"/>
       </div>
       <div className="product-detail-info">
         <h2>{product.name}</h2>

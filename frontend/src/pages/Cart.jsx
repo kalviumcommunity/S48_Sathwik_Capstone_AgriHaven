@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { CartContext } from '../context/CartContext';
 import { AuthContext } from '../context/AuthContext';
 import CartItem from '../components/CartItem';
+import API_BASE_URL from '../config';
 
 const Cart = () => {
   const { cartItems, fetchCart, clearCartState } = useContext(CartContext);
@@ -14,7 +15,7 @@ const Cart = () => {
   const placeOrderHandler = async () => {
     try {
       // 1. Create order
-      const res = await fetch('http://localhost:5000/api/orders', {
+      const res = await fetch(`${API_BASE_URL}/api/orders`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -32,7 +33,7 @@ const Cart = () => {
 
       if (res.ok) {
         // 2. Clear backend cart
-        await fetch('http://localhost:5000/api/cart', {
+        await fetch(`${API_BASE_URL}/api/cart`, {
           method: 'DELETE',
           headers: { Authorization: `Bearer ${token}` }
         });
