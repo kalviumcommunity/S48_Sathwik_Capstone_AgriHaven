@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 import AdminSidebar from '../components/AdminSidebar';
+import AdminAddProduct from './AdminAddProduct';
 import API_BASE_URL from '../config';
 
 const AdminProducts = () => {
@@ -81,6 +82,7 @@ const AdminProducts = () => {
             ))}
           </tbody>
         </table>
+        <AdminAddProduct />
       </div>
     </div>
   );
