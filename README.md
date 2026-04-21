@@ -8,7 +8,7 @@ This project was built as a capstone project using the **MERN stack** (MongoDB, 
 
 ## 🔗 Live Demo
 
-> Coming soon / Deployed at: *(add your deployment URL here)*
+> Deployed at: https://agrihaven-eight.vercel.app/
 
 ---
 
